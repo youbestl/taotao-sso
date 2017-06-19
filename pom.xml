@@ -108,6 +108,14 @@
             <version>1.10</version>
         </dependency>
 
+        <!--进行数据校验-->
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.3.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>

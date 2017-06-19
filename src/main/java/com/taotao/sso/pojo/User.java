@@ -9,6 +9,8 @@ import javax.persistence.Table;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 
 @Table(name = "tb_user")
 public class User {
@@ -17,13 +19,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Length(min = 6,max = 20,message = "用户名长度应该在6~20之间")
     private String username;
 
     @JsonIgnore //序列化时忽略该字段
+    @Length(min = 6,max = 20,message = "密码长度应该在6~20之间")
     private String password;
 
+    @Length(min = 11,max = 11,message = "手机号长度必须为11位")
     private String phone;
 
+    @Email
     private String email;
 
     private Date created;

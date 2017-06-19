@@ -2,16 +2,22 @@ package com.taotao.sso.controller;
 
 import com.taotao.sso.pojo.User;
 import com.taotao.sso.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -56,11 +62,21 @@ public class UserController {
 
     @RequestMapping(value = "doRegister",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> doRegister(User user) {
-        Map<String, Object> result = null;
+    public Map<String,Object> doRegister(@Valid User user, BindingResult bindingResult) {
+        Map<String, Object> result = new HashMap<>();
+        if (bindingResult.hasErrors()) {
+            ArrayList<String> msgs = new ArrayList<>();
+            //参数有误，校验失败
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            for (ObjectError allError : allErrors) {
+                msgs.add(allError.getDefaultMessage());
+            }
+            result.put("status", "400");
+            result.put("data", " 参数有误"+ StringUtils.join(msgs,"|"));
+            return result;
+        }
         try {
             Boolean bool = this.userService.doRegister(user);
-            result = new HashMap<>();
             if (bool) {
                 result.put("status", "200");
             }else{
