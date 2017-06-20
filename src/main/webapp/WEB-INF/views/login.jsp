@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%--去除jsp编译页面中的空白--%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%
+    String staticUrl = "http://static.taotao.com";
+    request.setAttribute("staticUrl",staticUrl);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>登录淘淘</title>
-    <link type="text/css" rel="stylesheet" href="/css/login.css"/>
-    <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-    <script type="text/javascript" src="/js/login/g.base.js"></script>
-   	<script type="text/javascript" src="/js/login/jdEdit.js"></script>
+    <link type="text/css" rel="stylesheet" href="${staticUrl}/css/login.css"/>
+    <script type="text/javascript" src="${staticUrl}/js/jquery-1.2.6.min.js"></script>
+    <script type="text/javascript" src="${staticUrl}/js/login/g.base.js"></script>
+   	<script type="text/javascript" src="${staticUrl}/js/login/jdEdit.js"></script>
     <script type="text/javascript">
         var pgeditor = new jQuery.pge({
             pgePath: "#",
@@ -39,13 +44,13 @@
                 }
             })
         </script>
-    
+
 </head>
 <body>
 <div class="w">
     <div id="logo">
     	<a href="http://www.taotao.com/" clstag="passport|keycount|login|01">
-    		<img src="/images/taotao-logo.gif" alt="淘淘" width="170" height="60"/>
+    		<img src="${staticUrl}/images/taotao-logo.gif" alt="淘淘" width="170" height="60"/>
     	</a><b></b>
    	</div>
 </div>
@@ -53,7 +58,7 @@
     <input type="hidden" id="uuid" name="uuid" value="1359c13d-7daa-4a2a-972d-f09e09e6605a"/>
     <div class=" w1" id="entry">
         <div class="mc " id="bgDiv">
-            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(/images/544a11d3Na5a3d566.png) 0px 0px no-repeat;">
+            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(${staticUrl}/images/544a11d3Na5a3d566.png) 0px 0px no-repeat;">
 			</div>
             <div class="form ">
                 <div class="item fore1">
@@ -103,7 +108,7 @@
                 <input type="hidden" name="machineNet" id="machineNet" value="" class="hide"/>
                 <input type="hidden" name="machineCpu" id="machineCpu" value="" class="hide"/>
                 <input type="hidden" name="machineDisk" id="machineDisk" value="" class="hide"/>
-                
+
                 <div class="item fore3  hide " id="o-authcode">
                     <span>验证码</span>
 
@@ -149,7 +154,7 @@
                             <dt><b>其它</b></dt>
                             <dd>
 								<a href="javascript:void(0)"
-                                               onclick="window.location='http://qq.jd.com/new/netease/login.action'+window.location.search;return false;">网易</a>			   
+                                               onclick="window.location='http://qq.jd.com/new/netease/login.action'+window.location.search;return false;">网易</a>
 								<a style="margin-left:30px;" href="javascript:void(0)"
                                                onclick="window.location='http://qq.jd.com/new/renren/login.action'+window.location.search;return false;">人人</a>
 								<br>
@@ -162,7 +167,7 @@
                                                onclick="window.location='http://qq.jd.com/new/kaixin001/login.action'+window.location.search;return false;">开心</a>
 								<a style="margin-left:30px;" href="javascript:void(0)"
                                                onclick="window.location='http://qq.jd.com/new/alipay/login.aspx'+window.location.search;return false;">支付宝</a>
-								<br>								
+								<br>
 								<a href="javascript:void(0)"
                                                onclick="window.location='http://qq.jd.com/new/qihao/login.action'+window.location.search;return false;">奇虎360</a>
 								<a style="margin-left:10px;" href="javascript:void(0)"
@@ -186,9 +191,9 @@
     <jsp:include page="../commons/footer-links.jsp"></jsp:include>
     <!-- links end -->
 </div>
-<script type="text/javascript" src="/js/login/login.js"></script>
-<script type="text/javascript" src="/js/login/jdThickBox.js"></script>
-<script type="text/javascript" src="/js/login/checkClient.js"></script>
+<script type="text/javascript" src="${staticUrl}/js/login/login.js"></script>
+<script type="text/javascript" src="${staticUrl}/js/login/jdThickBox.js"></script>
+<script type="text/javascript" src="${staticUrl}/js/login/checkClient.js"></script>
 <script>
    $("#jdsafe").hover(function () {
        $("#tip-safe").show();

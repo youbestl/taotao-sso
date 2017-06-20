@@ -8,8 +8,15 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 
-	<!-- 注解驱动:默认配置的升级版，非必须的 -->
-	<mvc:annotation-driven />
+    <!-- 注解驱动:默认配置的升级版，非必须的 -->
+    <mvc:annotation-driven>
+        <!-- 自定义string 类型的消息转换器 register-defaults 是否先加载自定义转化器-->
+        <mvc:message-converters>
+            <bean class = "com.taotao.common.spring.exetend.converter.json.CallbackMappingJackson2HttpMessageConverter">
+                <property name="callbackName" value="callback"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
 	<!-- 扫描Controller 不能省略，必须有 -->
 	<context:component-scan base-package="com.taotao.sso.controller" />
